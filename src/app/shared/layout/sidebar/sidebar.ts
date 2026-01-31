@@ -28,6 +28,11 @@ export class SidebarComponent {
       name: 'Reports & Analytics',
       icon: '/images/report.png',
       path: '/reports-analytics',
+      subItems: [
+        { name: 'Performance Overview', path: '/reports-analytics/overview' },
+        { name: 'Monthly Reports', path: '/reports-analytics/monthly' },
+        { name: 'Custom Reports', path: '/reports-analytics/custom' },
+      ],
     },
     {
       name: 'Users',

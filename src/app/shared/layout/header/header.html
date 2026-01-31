@@ -4,7 +4,7 @@
       class="flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 sm:gap-4 xl:justify-normal xl:border-b-0 xl:px-0 lg:py-4"
     >
       <button
-        class="items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-99999 flex dark:text-gray-400 md:flex md:border lg:h-11 lg:w-11"
+        class="items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-99999 flex dark:text-gray-400 md:flex md:border lg:h-11 lg:w-11 cursor-pointer"
         [ngClass]="{
           'bg-gray-100': (isMobileOpen$ | async),
         }"
@@ -39,7 +39,7 @@
       </a>
       <button
         (click)="toggleApplicationMenu()"
-        class="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-99999 hover:bg-gray-100 xl:hidden"
+        class="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-99999 hover:bg-gray-100 xl:hidden cursor-pointer"
       >
         <!-- Dots Icon -->
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

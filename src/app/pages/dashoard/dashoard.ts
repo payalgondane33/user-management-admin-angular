@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Api } from '../../shared/services/api';
-
+type TabStatus = 'all' | 'active' | 'inactive';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -13,17 +13,23 @@ import { Api } from '../../shared/services/api';
 export class DashoardComponent implements OnInit {
   users: any[] = [];
   filteredUsers: any[] = [];
+  tabs: { id: TabStatus; label: string }[] = [
+    { id: 'all', label: 'All' },
+    { id: 'active', label: 'Active' },
+    { id: 'inactive', label: 'Inactive' },
+  ];
 
   loading = false;
   error: string | null = null;
 
   searchTerm = '';
-  activeTab: 'all' | 'active' | 'inactive' = 'all';
 
   constructor(
     private api: Api,
     private router: Router,
   ) {}
+
+  activeTab: TabStatus = 'all';
 
   ngOnInit(): void {
     this.fetchUsers();
