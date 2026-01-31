@@ -1,59 +1,112 @@
-# UserManagementAdmin
+# User Management Admin Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+A modern **Angular 21 Admin Dashboard** built with **standalone components**, **signals**, **RxJS**, and **Tailwind CSS**.  
+This project focuses on clean UI/UX, responsive layout, and scalable architecture.
 
-## Development server
+## Live Demo: user-management-admin-angular.vercel.app
 
-To start a local development server, run:
+📸 Screenshots
+🖥 Desktop View – User List Page
 
-```bash
+Shows sidebar, filters, user cards, and layout
+
+📷 (Add screenshot here)
+![alt text](image.png)
+
+📱 Mobile View – Responsive Layout
+![alt text](image-1.png)
+
+Shows mobile sidebar & stacked layout
+
+📷 (Add screenshot here)
+![alt text](image-2.png)
+
+## ✨ Features
+
+- 📊 **Dashboard Layout**
+  - Collapsible sidebar (expand / minimize)
+  - Responsive header, sidebar, content, footer
+  - Mobile-friendly sidebar with backdrop
+
+- 👥 **User Management**
+  - Fetch users from API
+  - Card/Grid layout display
+  - Search users by name or username
+  - Status filters: **All / Active / Inactive**
+  - Randomly mocked user status (active/inactive)
+
+- 👤 **User Profile**
+  - Navigate to profile using dynamic route (`/profile/:id`)
+  - Display full user details:
+    - Basic info
+    - Company details
+    - Address & Geo location
+  - Status badge passed via router state
+
+- 🎯 **UX Enhancements**
+  - Active menu highlighting
+  - Loading & error states
+  - Optimized rendering using Angular Signals
+  - Smooth sidebar animations
+
+---
+
+## 🛠 Tech Stack
+
+- **Angular 21**
+- **Standalone Components**
+- **Angular Signals**
+- **RxJS**
+- **Tailwind CSS**
+- **Angular Router**
+- **REST API Integration**
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+├── app/
+│   ├── pages/
+│   │   ├── dashoard/
+│   │   └── profile/
+│   ├── shared/
+│   │   ├── layout/
+│   │   │   ├── header/
+│   │   │   ├── sidebar/
+│   │   │   ├── footer/
+│   │   │   └── backdrop/
+│   │   └── services/
+│   │       ├── api.ts
+│   │       └── sidebar.ts
+│   ├── app.routes.ts
+│   └── app.component.ts
+└── assets/
+
+
+Installation & Setup
+1️⃣ Clone the repository
+git clone https://github.com/your-username/user-management-admin.git
+cd user-management-admin
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Run the application
 ng serve
+
+4️⃣ Open in browser
+http://localhost:4200
+
+🌐 API Used
+
+This project uses the free public API:
+
+https://jsonplaceholder.typicode.com/users
+
+
+User status (active / inactive) is mocked locally for UI demonstration.
+
+Developed with ❤️ using Angular and Tailwind CSS.
 ```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
