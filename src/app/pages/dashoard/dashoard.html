@@ -1,0 +1,92 @@
+<div class="bg-white w-full px-5 py-3 h-20">
+  <h2 class="text-[#674D9F] font-medium">User Management</h2>
+  <p class="text-gray-500 mt-1 text-sm">Hi, Welcome to User Management</p>
+</div>
+
+<div
+  class="bg-white h-20 flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4 px-5 py-3 mt-3"
+>
+  <div class="flex gap-2">
+    <button
+      class="px-4 py-2 rounded-lg text-sm font-medium"
+      [class.bg-purple-600]="activeTab === 'all'"
+      [class.text-white]="activeTab === 'all'"
+      (click)="changeTab('all')"
+    >
+      All
+    </button>
+
+    <button
+      class="px-4 py-2 rounded-lg text-sm font-medium"
+      [class.bg-purple-600]="activeTab === 'active'"
+      [class.text-white]="activeTab === 'active'"
+      (click)="changeTab('active')"
+    >
+      Active
+    </button>
+
+    <button
+      class="px-4 py-2 rounded-lg text-sm font-medium"
+      [class.bg-purple-600]="activeTab === 'inactive'"
+      [class.text-white]="activeTab === 'inactive'"
+      (click)="changeTab('inactive')"
+    >
+      Inactive
+    </button>
+  </div>
+
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="applyFilters()"
+    placeholder="Search by name or username..."
+    class="w-full md:w-64 border border-purple-400 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-purple-200 focus:ring-1"
+  />
+</div>
+<div class="px-5">
+  @if (loading) {
+    <div class="text-center py-10 text-gray-500">Loading users...</div>
+  }
+
+  @if (error) {
+    <div class="text-center text-red-500 py-6">
+      {{ error }}
+    </div>
+  }
+
+  @if (!loading && filteredUsers.length) {
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      @for (user of filteredUsers; track user.id) {
+        <div class="rounded-xl border border-gray-200 bg-white p-4 hover:shadow-lg transition">
+          <h3 class="font-semibold text-gray-800">{{ user.name }}</h3>
+          <p class="text-sm text-gray-500">Username: {{ user.username }}</p>
+          <p class="text-sm mt-1">
+            Email: <span class="lowercase">{{ user.email }}</span>
+          </p>
+          <p class="text-xs text-gray-400 mt-1">Company Name: {{ user.company?.name }}</p>
+
+          <span
+            class="inline-block mt-2 px-2 py-1 text-xs rounded"
+            [class.bg-green-100]="user.status === 'active'"
+            [class.text-green-700]="user.status === 'active'"
+            [class.bg-red-100]="user.status === 'inactive'"
+            [class.text-red-700]="user.status === 'inactive'"
+          >
+            {{ user.status }}
+          </span>
+
+          <button
+            class="mt-4 w-full text-sm font-medium text-purple-600 border border-purple-600 rounded-lg py-2 hover:bg-purple-600 hover:text-white transition"
+            (click)="viewProfile(user)"
+          >
+            View Profile
+          </button>
+        </div>
+      }
+    </div>
+  }
+
+  @if (!loading && !filteredUsers.length) {
+    <div class="text-center py-10 text-gray-500">No users found</div>
+  }
+</div>

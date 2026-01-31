@@ -1,0 +1,70 @@
+<div class="mx-5 my-6 rounded-lg bg-white p-6 shadow-md">
+  @if (loading) {
+    <div class="flex justify-center py-10 text-gray-500">Loading profile...</div>
+  } @else if (error) {
+    <div class="text-center py-10 text-red-500">
+      User not found
+      <div class="mt-4">
+        <button
+          class="rounded-lg border border-purple-600 px-4 py-2 text-sm text-purple-600 hover:bg-purple-600 hover:text-white transition"
+          (click)="goBack()"
+        >
+          Back to Dashboard
+        </button>
+      </div>
+    </div>
+  } @else if (user) {
+    <div class="mb-6 flex items-center justify-between border-b-2 border-[#e4cef3] pb-4">
+      <div class="flex items-center gap-3">
+        <h2 class="text-2xl font-semibold text-gray-800">
+          {{ user.name }}
+        </h2>
+
+        <span
+          class="px-2 py-1 text-xs rounded-full font-medium"
+          [class.bg-green-100]="status === 'active'"
+          [class.text-green-700]="status === 'active'"
+          [class.bg-red-100]="status === 'inactive'"
+          [class.text-red-700]="status === 'inactive'"
+        >
+          {{ status | uppercase }}
+        </span>
+      </div>
+
+      <button class="text-sm text-purple-600 hover:underline" (click)="goBack()">← Back</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <h3 class="mb-3 text-sm font-semibold uppercase text-gray-600">Basic Information</h3>
+        <p>Email: {{ user.email }}</p>
+        <p>Phone: {{ user.phone }}</p>
+        <p>Website: {{ user.website }}</p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-semibold uppercase text-gray-600">Company</h3>
+        <p>Name: {{ user.company?.name }}</p>
+        <p>Catch Phrase: {{ user.company?.catchPhrase }}</p>
+        <p>Business: {{ user.company?.bs }}</p>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <h3 class="mb-3 text-sm font-semibold uppercase text-gray-600">Address</h3>
+      <p>
+        {{ user.address?.street }}, {{ user.address?.suite }},
+        {{ user.address?.city }}
+      </p>
+      <p>{{ user.address?.zipcode }}</p>
+    </div>
+
+    <div class="mt-8">
+      <h3 class="mb-3 text-sm font-semibold uppercase text-gray-600">Geo Location</h3>
+      <div class="grid grid-cols-2 gap-4 text-sm">
+        <p>Latitude: {{ user.address?.geo?.lat }}</p>
+        <p>Longitude: {{ user.address?.geo?.lng }}</p>
+      </div>
+    </div>
+  }
+</div>
