@@ -18,7 +18,6 @@ type NavItem = {
   templateUrl: './sidebar.html',
 })
 export class SidebarComponent {
-  // Main nav items
   navItems: NavItem[] = [
     {
       name: 'Dashboard',
@@ -176,13 +175,10 @@ export class SidebarComponent {
   }
 
   onSidebarMouseEnter() {
-    this.isExpanded$
-      .subscribe((expanded) => {
-        if (!expanded) {
-          this.sidebarService.setHovered(true);
-        }
-      })
-      .unsubscribe();
+    const expanded = this.sidebarService.isExpandedSnapshot();
+    if (!expanded) {
+      this.sidebarService.setHovered(true);
+    }
   }
 
   private setActiveMenuFromRoute(currentUrl: string) {

@@ -31,7 +31,9 @@ export class HeaderComponent {
   }
 
   handleToggle(): void {
-    if (window.innerWidth >= 1024) {
+    // On XL screens (>=1280) toggle expanded/collapsed
+    // On smaller screens (tablet/mobile) open the sidebar as an overlay
+    if (window.innerWidth >= 1280) {
       this.sidebarService.toggleExpanded();
     } else {
       this.sidebarService.toggleMobileOpen();
